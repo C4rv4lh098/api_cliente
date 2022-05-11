@@ -2,13 +2,14 @@ package com.api_cliente.api_cliente.domain.entiy;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -20,7 +21,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "cliente")
-@SecondaryTable(name = "endereco")
 @lombok.Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,7 +48,7 @@ public class Cliente {
     @Column(name = "nascimento")
     Date nascimento;
 
-    @Column(table = "endereco")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     Endereco endereco;
 }

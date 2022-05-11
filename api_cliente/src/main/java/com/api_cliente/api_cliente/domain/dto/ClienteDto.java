@@ -15,4 +15,5 @@ public class ClienteDto {
     String nome;
     String sexo;
     Date nascimento;
+    EnderecoDto endereco;
 }

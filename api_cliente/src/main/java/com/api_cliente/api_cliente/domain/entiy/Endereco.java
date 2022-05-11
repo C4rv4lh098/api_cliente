@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -38,7 +39,6 @@ public class Endereco{
     String bairro;
 
     @Column(name = "numero")
-    @NotBlank(message = "Número é obrigatório")
     Integer numero;
 
     @Column(name = "cidade")
@@ -48,4 +48,8 @@ public class Endereco{
     @Column(name = "uf")
     @NotBlank(message = "UF é obrigatório")
     String uf;
+
+    @OneToOne(mappedBy = "endereco")
+    Cliente cliente;
+    
 }
